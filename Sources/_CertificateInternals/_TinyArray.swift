@@ -40,64 +40,64 @@ extension _TinyArray: RandomAccessCollection {
     @inlinable
     public subscript(position: Int) -> Element {
         get {
-            self.storage[position]
+            storage[position]
         }
         set {
-            self.storage[position] = newValue
+            storage[position] = newValue
         }
     }
 
     @inlinable
     public var startIndex: Int {
-        self.storage.startIndex
+        storage.startIndex
     }
 
     @inlinable
     public var endIndex: Int {
-        self.storage.endIndex
+        storage.endIndex
     }
 }
 
 extension _TinyArray {
     @inlinable
     public init(_ elements: some Sequence<Element>) {
-        self.storage = .init(elements)
+        storage = .init(elements)
     }
 
     @inlinable
     public init(_ elements: some Sequence<Result<Element, some Error>>) throws {
-        self.storage = try .init(elements)
+        storage = try .init(elements)
     }
 
     @inlinable
     public init() {
-        self.storage = .init()
+        storage = .init()
     }
 
     @inlinable
     public mutating func append(_ newElement: Element) {
-        self.storage.append(newElement)
+        storage.append(newElement)
     }
 
     @inlinable
     public mutating func append(contentsOf newElements: some Sequence<Element>) {
-        self.storage.append(contentsOf: newElements)
+        storage.append(contentsOf: newElements)
     }
 
     @discardableResult
     @inlinable
     public mutating func remove(at index: Int) -> Element {
-        self.storage.remove(at: index)
+        storage.remove(at: index)
     }
 
     @inlinable
     public mutating func removeAll(where shouldBeRemoved: (Element) throws -> Bool) rethrows {
-        try self.storage.removeAll(where: shouldBeRemoved)
+        try storage.removeAll(where: shouldBeRemoved)
     }
 
     @inlinable
     public mutating func sort(by areInIncreasingOrder: (Element, Element) throws -> Bool) rethrows {
-        try self.storage.sort(by: areInIncreasingOrder)
+        try storage.sort(by: areInIncreasingOrder)
     }
 }
 
